@@ -15,7 +15,7 @@ This makes the state of popup window independent of state of parent window , ove
 
 * JsSIP : https://www.npmjs.com/package/jssip
     ```
-        $ npm install jssip
+        $ npm install --save jssip
     ```
 
 * path : https://www.npmjs.com/package/path
@@ -68,7 +68,6 @@ This is needed to be configured in popup side.
 }
 ```
 <div align="center" style="display:flex; flex-direction:row;justify-content:center; gap:20px;">
-<img src="https://raw.githubusercontent.com/divyatez-sprinklr/CallerPackage/main/readme_media/popup.png" height="300">
 <img src="https://raw.githubusercontent.com/divyatez-sprinklr/CallerPackage/main/readme_media/connecting.png" height="300">
 <img src="https://raw.githubusercontent.com/divyatez-sprinklr/CallerPackage/main/readme_media/connected.png" height="300">
 </div>
