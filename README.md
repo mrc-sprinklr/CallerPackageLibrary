@@ -1,7 +1,7 @@
 #  CallerPackage
 
-Caller Package is used to handle cross window calling service , using JsSIP. This library moved the intra-window calling logic to a popup window.
-This makes the state of popup window independent of state of parent window , overall mitigating the issues caused by this previously like refresh causing call end, etc.
+Caller Package is used to handle cross-window calling services, using JsSIP. This library moved the intra-window calling logic to a popup window.
+This makes the state of the popup window independent of the state of the parent window, overall mitigating the issues caused by this previously like refresh causing call end, etc.
 
 ##  Requirements
 
@@ -9,20 +9,20 @@ This makes the state of popup window independent of state of parent window , ove
 ```
 $ npm install --save jssip
 ```
-* path : https://www.npmjs.com/package/path
+* path: https://www.npmjs.com/package/path
 ```
 $ npm install --save path
 ```
 </br>
 
 ##  Installation
-npm : https://www.npmjs.com/package/callerpackage-sprinklr
+npm: https://www.npmjs.com/package/callerpackage-sprinklr
 ```
 $ npm i callerpackage-sprinklr
 ```
 ##  Getting Started
 
-After installation on package, create a instance of it.
+After installation of the package, create an instance of it.
 ```
 const callerPackage = new CallerPackage();
 ```
@@ -37,7 +37,7 @@ callerPackage.connect({
 	callback()
 );
 ```
-After this popup window will be created, if its not already active.
+After this popup window will be created, if it's not already active.
 
 <div align="center" style="display:flex; flex-direction:row;justify-content:center; gap:20px;">
 
@@ -49,7 +49,7 @@ After this popup window will be created, if its not already active.
 
 ---
 ##  Events
-Syntax for all events is as follow.
+The syntax for all events is as follows.
 ```
 callerPackage.on(event,callback);
 ```
@@ -65,67 +65,67 @@ console.log('Socket is connected');
 
 ###  INFORM_SOCKET_CONNECTED
 
-> Fired when socket is connected in popup window.
+> Fired when the socket is connected in the popup window.
 
 ---
 
 
 ###  INFORM_SOCKET_DISCONNECTED
 
->Fired when socket is disconnected in popup window.
+>Fired when the socket is disconnected in the popup window.
 
 ---
 
 
 ###  ACK_OUTGOING_CALL_START
 
->Fired when outgoing call is connected.
+>Fired when an outgoing call is connected.
 >Update Call begin and timer in parent window UI after getting this.
 
 ---
 
 ###  ACK_OUTGOING_CALL_END
 
->Fired when outgoing call is ended.
+>Fired when an outgoing call is ended.
 >Update Call end in parent window UI after getting this.
 ---
 
 
 ###  ACK_OUTGOING_CALL_FAIL
 
->Fired when outgoing call is failed.
+>Fired when an outgoing call failed.
 >Update Fail call attempt in parent window UI after getting this.
 ---
 
 ###  ACK_CALL_HOLD
 
->Fired when call is put on hold.
+>Fired when the call is put on hold.
 >Update Hold in parent window UI after getting this.
 ---
 
 ###  ACK_CALL_UNHOLD
 
->Fired when call is put on unhold.
+>Fired when the call is put on un-hold.
 >Update Unhold in parent window UI after getting this.
 ---
 
 ###  ACK_CALL_MUTE
 
-> Fired when call is put on mute.
+> Fired when the call is put on mute.
 > Update Mute in parent window UI after getting this.
 
 ---
 
 ###  ACK_CALL_UNMUTE
 
-> Fired when call is put on unmute.
+> Fired when the call is put on unmute.
 > Update Unmute in parent window UI after getting this.
 ---
 
 ###  ACK_SESSION_DETAILS
 
->Fired when session details is recieved.
->Use this to retrive and update Dialer. 
+>Fired when session details are received.
+>Use this to retrieve and update Dialer. 
 >####  Example
 >```
 > // This is session details , use this to store  details in parent window, and update UI accordingly.
@@ -150,9 +150,9 @@ console.log('Socket is connected');
 
 ###  connect()
 
-This method is used to connect to popup.
+This method is used to connect to the popup.
 
-If popup is already active it will connect to that, otherwise it will start a new popup window.
+If the popup is already active it will connect to that, otherwise, it will start a new popup window.
 
 #####  Arguments
 - config = {
@@ -181,7 +181,7 @@ updateSocketConnectedInUI();
 
 ###  call()
 
-This method is called to invoke call procedure.
+This method is called to invoke the calling procedure.
 
 #####  Arguments
 
@@ -206,7 +206,7 @@ callerPackage.on("ACK_OUTGOING_CALL_FAIL", () => {
 
 ###  terminate()
 
-This method is called to end call.
+This method is called to terminate the call.
 ```
 // Request to terminate call
 callerPackage.terminate();
@@ -257,7 +257,7 @@ callerPackage.on("ACK_CALL_MUTE", () => {
 ```
 ---
 ###  unmute()
-This method is called to unmute ongoing call.
+This method is called to unmute the ongoing call.
 ```
 // Request to unmute call
 callerPackage.unmute();
@@ -274,29 +274,31 @@ callerPackage.on("ACK_CALL_UNMUTE", () => {
 
 This method is used to fetch call object from callerPackage.
 Whenever ```ACK_SESSION_DETAILS``` event is triggered, fetch the details into a local callObject.
->Fired when session details is recieved.
->Use this to retrive and update Dialer. 
->####  Example
->```
-> // This is session details , use this to store  details in parent window, 
-> // and update UI accordingly.
-> // Use start_time to handle timer.
->let callObject = {
-> sender: "",
-> receiver: "",
-> startTime: "",
-> endTime: "",
-> hold: false,
-> mute: false,
-> };
->```
+Fired when session details is recieved.
+##### callObject
+This is session details, use this to store  details in the parent window, 
+Use this to retrieve and update UI accordingly.
+For Example: 
+* Use start_time to handle the timer on the dialer.
+* Use end_time to show logs.
+* use the receiver to update the name.
+```
+let callObject = {
+ sender: "",
+ receiver: "",
+ startTime: "",
+ endTime: "",
+ hold: false,
+ mute: false,
+ };
+```
 
->```
->callerPackage.on('ACK_SESSION_DETAILS',()=>{
->let sessionDetails = callerPackage.getCallObject();
->	console.log(sessionDetails);
->});
->```
+```
+callerPackage.on('ACK_SESSION_DETAILS',()=>{
+let sessionDetails = callerPackage.getCallObject();
+	console.log(sessionDetails);
+});
+```
 ---
 
 
