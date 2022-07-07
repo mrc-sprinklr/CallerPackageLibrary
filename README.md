@@ -65,51 +65,85 @@ console.log('Socket is connected');
 
 ###  INFORM_SOCKET_CONNECTED
 
-Fired when socket is connected in popup window.
+> Fired when socket is connected in popup window.
+
+---
+
 
 ###  INFORM_SOCKET_DISCONNECTED
 
-Fired when socket is disconnected in popup window.
+>Fired when socket is disconnected in popup window.
+
+---
+
 
 ###  ACK_OUTGOING_CALL_START
 
-Fired when outgoing call is connected.
+>Fired when outgoing call is connected.
+>Update Call begin and timer in parent window UI after getting this.
+
+---
 
 ###  ACK_OUTGOING_CALL_END
 
-Fired when outgoing call is ended.
+>Fired when outgoing call is ended.
+>Update Call end in parent window UI after getting this.
+---
+
 
 ###  ACK_OUTGOING_CALL_FAIL
 
-Fired when outgoing call is failed.
+>Fired when outgoing call is failed.
+>Update Fail call attempt in parent window UI after getting this.
+---
 
 ###  ACK_CALL_HOLD
 
-Fired when call is put on hold.
+>Fired when call is put on hold.
+>Update Hold in parent window UI after getting this.
+---
 
 ###  ACK_CALL_UNHOLD
 
-Fired when call is put on unhold.
+>Fired when call is put on unhold.
+>Update Unhold in parent window UI after getting this.
+---
 
 ###  ACK_CALL_MUTE
 
-Fired when call is put on mute.
+> Fired when call is put on mute.
+> Update Mute in parent window UI after getting this.
+
+---
 
 ###  ACK_CALL_UNMUTE
 
-Fired when call is put on unmute.
+> Fired when call is put on unmute.
+> Update Unmute in parent window UI after getting this.
+---
 
 ###  ACK_SESSION_DETAILS
 
-Fired when session details is recieved.
-
-####  Example
-```
-callerPackage.on('ACK_SESSION_DETAILS',()=>{
-	let sessionDetails = callerPackage.getCallObject();
-	console.log(sessionDetails);
-});
-```
+>Fired when session details is recieved.
+>Use this to retrive and update Dialer. 
+>####  Example
+>```
+> // This is session details , use this to store  details in parent window, and update UI accordingly.
+> // Use start_time to handle timer.
+>let callObject = {
+> sender: "",
+> receiver: "",
+> startTime: "",
+> endTime: "",
+> hold: false,
+> mute: false,
+> };
+>callerPackage.on('ACK_SESSION_DETAILS',()=>{
+>let sessionDetails = callerPackage.getCallObject();
+>	console.log(sessionDetails);
+>});
+>```
+---
 
 
 ##  Methods
@@ -233,5 +267,34 @@ callerPackage.on("ACK_CALL_UNMUTE", () => {
 	updateCallUnmuteUI();
 });
 ```
+#### getCallObject()
+
+This method is used to fetch call object from callerPackage.
+Whenever ```ACK_SESSION_DETAILS``` event is triggered, fetch the details into a local callObject.
+>Fired when session details is recieved.
+>Use this to retrive and update Dialer. 
+>####  Example
+>```
+> // This is session details , use this to store  details in parent window, 
+> // and update UI accordingly.
+> // Use start_time to handle timer.
+>let callObject = {
+> sender: "",
+> receiver: "",
+> startTime: "",
+> endTime: "",
+> hold: false,
+> mute: false,
+> };
+>```
+
+>```
+>callerPackage.on('ACK_SESSION_DETAILS',()=>{
+>let sessionDetails = callerPackage.getCallObject();
+>	console.log(sessionDetails);
+>});
+>```
+---
+
 
 </br>
