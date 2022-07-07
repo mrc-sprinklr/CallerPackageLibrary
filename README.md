@@ -267,6 +267,9 @@ callerPackage.on("ACK_CALL_UNMUTE", () => {
 	updateCallUnmuteUI();
 });
 ```
+
+---
+
 #### getCallObject()
 
 This method is used to fetch call object from callerPackage.
