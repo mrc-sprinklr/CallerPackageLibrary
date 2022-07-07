@@ -1,5 +1,5 @@
 {
-  "name": "CallerPackage",
+  "name": "callerpackage-sprinklr",
   "version": "1.0.0",
   "description": "Calling through popup using JsSIP",
   "main": "client.js",
