@@ -1,0 +1,30 @@
+{
+  "name": "CallerPackage",
+  "version": "1.0.0",
+  "description": "Calling through popup using JsSIP",
+  "main": "client.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrc-sprinklr/CallerPackageLibrary.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mrc-sprinklr/CallerPackageLibrary/issues"
+  },
+  "homepage": "https://github.com/mrc-sprinklr/CallerPackageLibrary#readme",
+  "dependencies": {
+    "jssip": "^3.9.0",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.2",
+    "@babel/preset-env": "^7.18.2",
+    "babelify": "^10.0.0",
+    "browserify": "^17.0.0"
+  }
+}
